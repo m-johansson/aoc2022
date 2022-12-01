@@ -1,4 +1,3 @@
-
 import pathlib
 
 def read_inputs():
@@ -9,15 +8,17 @@ def read_inputs():
 
 def main():
     lines = read_inputs()
-    largest = 0
+    calories = []
     current = 0
     for l in lines:
         if l != "\n":
             current += int(l)
         else:
-            if current > largest:
-                largest = current
-    print(largest)
+            calories.append(current)
+            current = 0
+    calories.sort(reverse=True)
+    print(calories)
+    print(sum(calories[0:3]))
 
 
 if __name__ == "__main__":
