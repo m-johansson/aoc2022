@@ -1,4 +1,5 @@
 import pathlib
+import heapq
 
 def read_inputs():
     filepath = pathlib.Path(__file__).parent.parent / "inputs/day1.txt" 
@@ -14,11 +15,9 @@ def main():
         if l != "\n":
             current += int(l)
         else:
-            calories.append(current)
+            heapq.heappush(calories, current)
             current = 0
-    calories.sort(reverse=True)
-    print(calories)
-    print(sum(calories[0:3]))
+    print(sum(heapq.nlargest(3, calories)))
 
 
 if __name__ == "__main__":
