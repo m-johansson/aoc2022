@@ -1,12 +1,15 @@
 from . import utils
 
-TRANSLATION = {
-    "X": 1,
-    "Y": 2,
-    "Z": 3,
-    "A": 1,
-    "B": 2,
-    "C": 3,
+SCORE = {
+    "C Z": 7,
+    "A Z": 8,
+    "B Z": 9,
+    "A Y": 4,
+    "B Y": 5,
+    "C Y": 6,
+    "A X": 3,
+    "B X": 1,
+    "C X": 2,
 }
 
 def _score_win(opponents:int, mine:int):
@@ -18,17 +21,14 @@ def _score_win(opponents:int, mine:int):
         return 6
     return 0
 
-def translater(move:str):
-    return TRANSLATION[move]
 
-def part1():
+def part2():
     score = 0
     for line in utils.read_inputs(2):
-        moves = line.split()
-        moves = [translater(move) for move in moves]
-        score += _score_win(moves[0], moves[1]) + moves[1]
+        line = line.strip()
+        score += SCORE[line]
     print(score)
 
 
 if __name__=="__main__":
-    part1()
+    part2()
