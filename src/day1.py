@@ -1,8 +1,9 @@
 import pathlib
 import heapq
 
+
 def read_inputs():
-    filepath = pathlib.Path(__file__).parent.parent / "inputs/day1.txt" 
+    filepath = pathlib.Path(__file__).parent.parent / "inputs/day1.txt"
     with open(filepath) as fid:
         yield from fid
 

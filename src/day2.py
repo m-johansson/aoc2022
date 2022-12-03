@@ -12,6 +12,7 @@ SCORE = {
     "C X": 2,
 }
 
+
 def part2():
     score = 0
     for line in utils.read_inputs(2):
@@ -20,5 +21,5 @@ def part2():
     print(score)
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     part2()
