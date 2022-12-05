@@ -42,7 +42,7 @@ class MoveReader:
     def read_moves(self, line: str) -> typing.List[int]:
         result = self.pattern.match(line)
         l = [int(i) for i in result.groups()]
-        assert (len(l)) == 3
+        assert len(l) == 3
         return l[0], l[1], l[2]  # amount, source, target
 
 
