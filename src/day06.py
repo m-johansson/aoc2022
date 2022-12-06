@@ -9,7 +9,7 @@ def sliding_window(sequence):
 
 
 def main(signal):
-    windows = ((index, set(window)) for index, window in sliding_window(list(signal)))
+    windows = ((index, set(window)) for index, window in sliding_window(signal))
     for index, window in windows:
         if len(window) == WINDOW_SIZE:
             return index
