@@ -4,26 +4,35 @@ from . import utils
 class CPU:
 
     def __init__(self) -> None:
-        self.cycle = 0
+        self.position = 0
+        self.cycle_count = 1
         self.x = 1
-        self.score_cycles = [20, 60, 100, 140, 180, 220]
         self.score = 0
+        self.screen = ""
 
     def noop(self):
-        self.cycle += 1
-        self._evaluate()
+        self.cycle()
 
     def addx(self, value:int):
-        self.cycle += 1
-        self._evaluate()
-        self.cycle += 1
-        self._evaluate()
+        self.cycle()
+        self.cycle()
         self.x += value
 
 
-    def _evaluate(self):
-        if self.cycle in self.score_cycles:
-            self.score += self.cycle*self.x
+    def cycle(self):
+        self.cycle_count += 1
+        self._draw()
+        self.position += 1
+
+    def _draw(self):
+        screen_coord = (self.position % 40)
+        if screen_coord == 0:
+            self.screen += "\n"
+        if abs(screen_coord - self.x) <= 1:
+            self.screen += "#"
+        else:
+            self.screen += "."
+
 
 if __name__=="__main__":
     lines = utils.read_inputs(10)
@@ -34,4 +43,4 @@ if __name__=="__main__":
                 cpu.noop()
             case ["addx", value]:
                 cpu.addx(int(value))
-    print(cpu.score)
+    print(cpu.screen)
