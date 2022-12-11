@@ -7,33 +7,6 @@ from pprint import pprint
 from . import utils
 
 
-class Item:
-    def __init__(self, worry: int) -> None:
-        self.value = worry
-        self.max_worry = None
-
-    def set_max_worry(self, max_worry: int):
-        self.max_worry = max_worry
-
-    def __mul__(self, factor):
-        self.value = (self.value * int(factor)) % max_worry
-        return self
-
-    def __add__(self, part: int):
-        self.value = (self.value + int(part)) % max_worry
-        return self
-
-    def is_divisible(self, denominator):
-        return (self.value % denominator) == 0
-
-    def __int__(self):
-        return self.value
-
-    def __pow__(self, power):
-        self.value = self.value**power
-        return self
-
-
 class Monkey:
     def __init__(
         self,
@@ -79,6 +52,33 @@ class Monkey:
 
     def __mul__(self, other):
         return self.inspections * other.inspections
+
+
+class Item:
+    def __init__(self, worry: int) -> None:
+        self.value = worry
+        self.max_worry = None
+
+    def set_max_worry(self, max_worry: int):
+        self.max_worry = max_worry
+
+    def __mul__(self, factor):
+        self.value = (self.value * int(factor)) % max_worry
+        return self
+
+    def __add__(self, part: int):
+        self.value = (self.value + int(part)) % max_worry
+        return self
+
+    def is_divisible(self, denominator):
+        return (self.value % denominator) == 0
+
+    def __int__(self):
+        return self.value
+
+    def __pow__(self, power):
+        self.value = self.value**power
+        return self
 
 
 def is_divisible_factory(denominator: int) -> typing.Callable:
