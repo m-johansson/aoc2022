@@ -59,9 +59,6 @@ class Item:
         self.value = worry
         self.max_worry = None
 
-    def set_max_worry(self, max_worry: int):
-        self.max_worry = max_worry
-
     def __mul__(self, factor):
         self.value = (self.value * int(factor)) % max_worry
         return self
